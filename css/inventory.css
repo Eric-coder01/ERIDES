@@ -1,0 +1,1188 @@
+/* Hero Section */
+.inventory-hero {
+    height: 55vh;
+    min-height: 200px;
+    background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)),
+                url('../images/inventory/bikes/yama.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 60px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Vehicle Section Common Styles */
+.vehicle-section {
+    padding: 4rem 0;
+    background: var(--section-bg);
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+.card-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 1rem 0;
+}
+
+.card-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Updated Card Showcase */
+.suv-showcase {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 1rem 0;
+}
+
+.suv-showcase::-webkit-scrollbar {
+    display: none;
+}
+
+/* Updated Card Styles */
+.card {
+    flex: 0 0 350px;
+    height: 450px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--card-bg, #1a1a1a);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.card__image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__secondary-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+}
+
+.card__secondary-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    transform: translateY(100%);
+    transition: all 0.5s ease;
+    z-index: 3;
+}
+
+.card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.card__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: rgba(0, 0, 0, 0.95);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-button.prev { left: 0.5rem; }
+.nav-button.next { right: 0.5rem; }
+
+/* Hover Effects */
+.card:hover .card__image {
+    transform: translateY(50%);
+    height: 50%;
+}
+
+.card:hover .card__secondary-image {
+    opacity: 1;
+}
+
+.card:hover .card__content {
+    transform: translateY(0);
+}
+
+/* View Details Button */
+.view-details-btn {
+    padding: 0.75rem 1.5rem;
+    background: #1a472a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;                     
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for all view details buttons */
+.view-details-btn:hover {
+    background: #007bff; /* Blue background on hover */
+    transform: translateY(-2px); /* Optional: slight lift effect */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2); /* Optional: subtle shadow */
+}
+
+/* Active state when button is clicked */
+.view-details-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .carousel-container {
+        padding: 0 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 0 0 300px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-container {
+        padding: 0 1rem;
+    }
+    
+    .card {
+        flex: 0 0 280px;
+        height: 380px;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SUV Section Header Styling */
+.suv-section .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1205ceec; /* Blue color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* Optional: Add underline effect specifically for SUV section */
+.suv-section .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #1100ff; /* Matching blue underline */
+}
+
+/* Keep other section titles in their original color */
+.section-title {
+    color: var(--text-primary, #333);
+}
+
+/* Sports Section Layout - Matching SUV section */
+.sports-section {
+    padding: 4rem 0;
+    background: var(--section-bg, #2a2a2b);
+    position: relative;
+}
+
+/* Sports Section Header Styling */
+.sports-section .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1205ceec; /* Blue color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* Underline effect for sports section */
+.sports-section .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #1100ff;
+}
+
+/* Sports Section specific styles */
+.sports-section .suv-showcase {
+    margin-bottom: 2rem; /* Add space at bottom of showcase */
+}
+
+/* Sports cards specific hover effect - optional */
+.sports-section .card:hover {
+    transform: translateY(-5px) scale(1.02); /* Slightly larger scale effect */
+}
+
+/* Sports section specific button color - optional */
+.sports-section .view-details-btn {
+    padding: 0.75rem 1.5rem;
+    background: #1a472a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto; /* Centers the button */
+    display: block; /* Makes margin auto work */
+}
+
+#sports-section .view-details-btn:hover {
+    background: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+#sports-section .view-details-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.1);
+}
+
+/* Lorry Section Styling */
+.lorry-section {
+    padding: 4rem 0;
+    background: var(--section-bg, #2a2a2b);
+    position: relative;
+}
+
+.lorry-section .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1205ceec;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.lorry-section .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #1100ff;
+}
+
+/* Bikes Section Styling */
+.bikes-section {
+    padding: 4rem 0;
+    background: var(--section-bg, #2a2a2b);
+    position: relative;
+}
+
+.bikes-section .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1205ceec;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.bikes-section .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #1100ff;
+}
+
+/* Update/add these styles */
+.cards-container {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding: 1rem 0;
+}
+
+.cards-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.card {
+    flex: 0 0 350px; /* Don't allow cards to grow or shrink, maintain 350px width */
+    height: 450px;
+    position: relative;
+    /* ... rest of your existing card styles ... */
+}
+
+/* Make sure carousel container has proper spacing */
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+/* Navigation buttons positioning */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.nav-button.prev {
+    left: 1rem;
+}
+
+.nav-button.next {
+    right: 1rem;
+}
+
+/* Search and Filter Section Styles */
+.search-filter-section {
+    background: var(--bg-secondary);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-filter-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Search Bar Styles */
+.search-wrapper {
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.1);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+/* Filter Controls */
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.filter-group label i {
+    color: var(--primary-color);
+}
+
+.filter-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+    outline: none;
+}
+
+/* Active Filters */
+.active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 25px;
+    font-size: 0.875rem;
+}
+
+.filter-tag button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.filter-tag button:hover {
+    transform: scale(1.2);
+}
+
+/* Results Count */
+.results-count {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-filter-container {
+        padding: 0 1rem;
+    }
+
+    .filter-controls {
+        gap: 1rem;
+    }
+
+    .filter-group {
+        min-width: calc(50% - 0.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-group {
+        min-width: 100%;
+    }
+
+    .search-bar input {
+        font-size: 0.875rem;
+    }
+}
+
+/* Category Navigation Styles */
+.category-nav {
+    background: #0e2918; /* Keep green background */
+    padding: 1rem 0;
+    position: sticky;
+    top: 60px;
+    z-index: 100;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.category-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.category-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.category-icon {
+    background: rgba(0, 123, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.category-icon i {
+    font-size: 1.5rem;
+    color: #007bff; /* Blue icons */
+    transition: all 0.3s ease;
+}
+
+.category-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    color: #007bff; /* Default blue color */
+}
+
+.category-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #007bff; /* Blue indicator */
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+/* Hover Effects - Updated for green label */
+.category-link:hover .category-label {
+    color: #2ecc71; /* Bright green on hover */
+}
+
+.category-link:hover .category-icon {
+    border-color: #007bff;
+    transform: translateY(-5px);
+    background: rgba(0, 123, 255, 0.15);
+}
+
+.category-link:hover .category-icon i {
+    color: #0056b3;
+}
+
+.category-link:hover .category-indicator {
+    width: 50%;
+}
+
+/* Active State */
+.category-link.active .category-label {
+    color: #2ecc71; /* Green color for active state too */
+}
+
+.category-link.active .category-icon {
+    border-color: #007bff;
+    background: rgba(0, 123, 255, 0.2);
+}
+
+.category-link.active .category-icon i {
+    color: #007bff;
+}
+
+.category-link.active .category-indicator {
+    width: 50%;
+    background: #007bff;
+}
+
+/* Keep your existing responsive styles */
+@media (max-width: 768px) {
+    .category-nav-container {
+        padding: 0 1rem;
+        gap: 0.5rem;
+    }
+
+    .category-link {
+        min-width: 80px;
+        padding: 0.75rem;
+    }
+
+    .category-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .category-icon i {
+        font-size: 1.2rem;
+    }
+
+    .category-label {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-nav-container {
+        gap: 0.25rem;
+    }
+
+    .category-link {
+        min-width: 70px;
+        padding: 0.5rem;
+    }
+
+    .category-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .category-label {
+        font-size: 0.7rem;
+    }
+}
+
+/* Animation for Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px; /* Adjust based on your header + nav height */
+}
+
+/* Search Button Container */
+.search-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Search Button Styles */
+.search-button {
+    padding: 1rem 2.5rem;
+    background: #1a472a; /* Green to match category nav */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-button span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-button i {
+    transition: transform 0.3s ease;
+}
+
+.search-button:hover {
+    background: #2ecc71;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-button:hover i {
+    transform: translateX(4px);
+}
+
+/* Optional: Add a pulse animation */
+@keyframes buttonPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(46, 204, 113, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+.search-button:hover {
+    animation: buttonPulse 2s infinite;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .search-button-container {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Search Results Summary Styles */
+.search-results-summary {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(26, 71, 42, 0.1); /* Light green background */
+    border-radius: 8px;
+    display: none; /* Hidden by default */
+}
+
+.search-results-summary.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.search-summary-text {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.search-term {
+    color: #007bff; /* Blue to match category labels */
+    font-weight: 600;
+}
+
+.filter-term {
+    color: #2ecc71; /* Green to match theme */
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Sports Car Section Styles */
+#sports-section {
+    background-color: #ffffff; /* White background */
+    padding: 4rem 0;
+    position: relative;
+}
+
+#sports-section .section-header h2 {
+    color: #333333; /* Darker text for better contrast on white */
+}
+
+/* Update card styles within sports section for better contrast */
+#sports-section .card {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
+}
+
+#sports-section .nav-button {
+    background: rgba(0, 0, 0, 0.8); /* Keep nav buttons visible */
+    color: white;
+}
+
+#sports-section .nav-button:hover {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+/* Optional: Add a subtle border to separate sections */
+#sports-section {
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Ensure proper spacing between sections */
+#sports-section {
+    margin: 2rem 0;
+}
+
+/* Optional: Add a subtle gradient for more depth */
+#sports-section {
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+/* Common White Section Styles for All Vehicle Sections */
+#suv-section,
+#sports-section,
+#lorry-section,
+#bikes-section {
+    background-color: #ffffff;
+    padding: 4rem 0;
+    position: relative;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    margin: 2rem 0;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+/* Section Headers */
+#suv-section .section-header h2,
+#sports-section .section-header h2,
+#lorry-section .section-header h2,
+#bikes-section .section-header h2 {
+    color: #333333;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+#suv-section .section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #1100ff;
+}
+
+/* Card Containers */
+#suv-section .cards-container,
+#sports-section .cards-container,
+#lorry-section .cards-container,
+#bikes-section .cards-container {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 1rem 0;
+}
+
+/* Hide Scrollbar */
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card Styles within white sections */
+#suv-section .card,
+#sports-section .card,
+#lorry-section .card,
+#bikes-section .card {
+    flex: 0 0 350px;
+    height: 450px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Navigation Buttons */
+#suv-section .nav-button,
+#sports-section .nav-button,
+#lorry-section .nav-button,
+#bikes-section .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.nav-button.prev {
+    left: 1rem;
+}
+
+.nav-button.next {
+    right: 1rem;
+}
+
+/* Navigation Button Hover Effects */
+#suv-section .nav-button:hover,
+#sports-section .nav-button:hover,
+#lorry-section .nav-button:hover,
+#bikes-section .nav-button:hover {
+    background: rgba(0, 0, 0, 0.95);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 4rem;
+}
+
+/* Section Spacing */
+.vehicle-section + .vehicle-section {
+    margin-top: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .carousel-container {
+        padding: 0 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #suv-section,
+    #sports-section,
+    #lorry-section,
+    #bikes-section {
+        padding: 3rem 0;
+    }
+
+    #suv-section .section-header h2,
+    #sports-section .section-header h2,
+    #lorry-section .section-header h2,
+    #bikes-section .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .card {
+        flex: 0 0 300px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    #suv-section,
+    #sports-section,
+    #lorry-section,
+    #bikes-section {
+        padding: 2rem 0;
+    }
+
+    #suv-section .section-header h2,
+    #sports-section .section-header h2,
+    #lorry-section .section-header h2,
+    #bikes-section .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .carousel-container {
+        padding: 0 2rem;
+    }
+
+    .card {
+        flex: 0 0 280px;
+        height: 380px;
+    }
+}
+
+/* Favorite Button Styles */
+.favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+}
+
+.favorite-btn i {
+    color: #ff4757;
+    font-size: 18px;
+}
+
+/* Favorites Counter */
+.favorites-counter {
+    position: relative;
+    margin-left: 15px;
+}
+
+.fav-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}

@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-RIDES AUTOMOTIVES - Inventory</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/inventory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-car"></i>
+            <span>E-RIDES AUTOMOTIVES</span>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html" class="nav-link">Home</a>
+            <a href="./inventory.html" class="nav-link active">Inventory</a>
+            <a href="./services.html" class="nav-link">Services</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="inventory-hero">
+        <div class="hero-content">
+            <h1>Our Collection</h1>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="search-filter-section">
+        <div class="search-filter-container">
+            <!-- Search Bar -->
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="vehicleSearch" placeholder="Search vehicles by name, brand, or type...">
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="priceFilter">
+                        <i class="fas fa-dollar-sign"></i>
+                        Price Range
+                    </label>
+                    <select id="priceFilter" class="filter-select">
+                        <option value="all">All Prices</option>
+                        <option value="0-50000">Under $50,000</option>
+                        <option value="50000-100000">$50,000 - $100,000</option>
+                        <option value="100000-200000">$100,000 - $200,000</option>
+                        <option value="200000+">$200,000+</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="typeFilter">
+                        <i class="fas fa-car"></i>
+                        Vehicle Type
+                    </label>
+                    <select id="typeFilter" class="filter-select">
+                        <option value="all">All Types</option>
+                        <option value="suv">LUXURY SUV COLLECTION</option>
+                        <option value="sports">SPORTS CAR COLLECTION</option>
+                        <option value="lorry">LUXURY TRUCK COLLECTION</option>
+                        <option value="bike">PREMIUM BIKES COLLECTION</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="fuelFilter">
+                        <i class="fas fa-gas-pump"></i>
+                        Fuel Type
+                    </label>
+                    <select id="fuelFilter" class="filter-select">
+                        <option value="all">All Types</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="electric">Electric</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="yearFilter">
+                        <i class="fas fa-calendar"></i>
+                        Year
+                    </label>
+                    <select id="yearFilter" class="filter-select">
+                        <option value="all">All Years</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Search Results Summary -->
+            <div class="search-results-summary" id="searchSummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- Results Count -->
+            <div class="results-count">
+                <span id="resultCount">0</span> vehicles found
+            </div>
+
+            <!-- Repositioned Search Button -->
+            <div class="search-button-container">
+                <button class="search-button" id="searchBtn">
+                    <span>Search Vehicles</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Replace the existing category-nav section -->
+    <nav class="category-nav">
+        <div class="category-nav-container">
+            <a href="#suv-section" class="category-link">
+                <div class="category-icon">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <span class="category-label">SUVs</span>
+                <div class="category-indicator"></div>
+            </a>
+
+            <a href="#sports-section" class="category-link">
+                <div class="category-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <span class="category-label">Sports Cars</span>
+                <div class="category-indicator"></div>
+            </a>
+
+            <a href="#lorry-section" class="category-link">
+                <div class="category-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <span class="category-label">Trucks</span>
+                <div class="category-indicator"></div>
+            </a>
+
+            <a href="#bikes-section" class="category-link">
+                <div class="category-icon">
+                    <i class="fas fa-motorcycle"></i>
+                </div>
+                <span class="category-label">Bikes</span>
+                <div class="category-indicator"></div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- SUV Section -->
+    <section id="suv-section" class="vehicle-section">
+        <div class="section-header">
+            <h2>Luxury SUVs Collection</h2>
+        </div>
+
+        <div class="carousel-container">
+            <button class="nav-button prev" id="suvPrevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="cards-container" id="suvCardsContainer">
+                
+                <!-- SUV Card 2 -->
+                <div class="card" data-type="suv" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/suv/alpina.jpg" alt="BMW Alpina XB7">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/suv/alpinaint.jpg" alt="XB7 Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">BMW ALPINA XB7</h3>
+                        <p class="card__description">
+                            Ultra Luxury SUV
+                            <br>Price: $145,995
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- SUV Card 3 -->
+                <div class="card" data-type="suv" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/suv/cad.jpg" alt="Cadillac Escalade">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/suv/cadint.jpg" alt="Escalade Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">ESCALADE V</h3>
+                        <p class="card__description">
+                            American Luxury SUV
+                            <br>Price: $149,990
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- SUV Card 4 -->
+                <div class="card" data-type="suv" data-fuel="electric" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/suv/rivian.jpg" alt="Rivian R1S">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/suv/rivianint.jpg" alt="R1S Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">RIVIAN R1S</h3>
+                        <p class="card__description">
+                            Electric Luxury SUV
+                            <br>Price: $78,000
+                            <br>Year: 2024
+                            <br>Type: Electric
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- SUV Card 5 -->
+                <div class="card" data-type="suv" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/suv/navigator.jpg" alt="Lincoln Navigator">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/suv/navigatorint.jpg" alt="Navigator Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">LINCOLN NAVIGATOR</h3>
+                        <p class="card__description">
+                            American Luxury SUV
+                            <br>Price: $109,900
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- SUV Card 6 -->
+                <div class="card" data-type="suv" data-fuel="electric" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/suv/q8.jpg" alt="Tesla Model X">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/suv/q8interior.jpg" alt="Model X Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">TESLA MODEL X</h3>
+                        <p class="card__description">
+                            Electric Luxury SUV
+                            <br>Price: $94,990
+                            <br>Year: 2024
+                            <br>Type: Electric
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- SUV Card 7 -->
+                <div class="card" data-type="suv" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/suv/range.jpg" alt="Range Rover">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/suv/rangeint.jpg" alt="Range Rover Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">RANGE ROVER SV</h3>
+                        <p class="card__description">
+                            British Luxury SUV
+                            <br>Price: $218,300
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- SUV Card 8 -->
+                <div class="card" data-type="suv" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/suv/bently.jpg" alt="Bentley Bentayga">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/suv/bentlylogo.jpg" alt="Bentayga Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">BENTLEY BENTAYGA</h3>
+                        <p class="card__description">
+                            Ultra Luxury SUV
+                            <br>Price: $218,300
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-button next" id="suvNextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Sports Car Section -->
+    <section id="sports-section" class="sports-section">
+        <div class="section-header">
+            <h2 class="section-title">Sports Cars Collection</h2>
+        </div>
+
+        <div class="carousel-container">
+            <button class="nav-button prev" id="sportsPrevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="suv-showcase" id="sportsShowcase">
+                <!-- Sports Car Card 1 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/porche2.jpg" alt="Porsche 911">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/porche3.jpg" alt="Porsche Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">PORSCHE 911</h3>
+                        <p class="card__description">
+                            Premium Sports Car
+                            <br>Price: $125,500
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 2 -->
+                <div class="card" data-type="sports" data-fuel="hybrid" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/ferrari.jpg" alt="Ferrari SF90">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/ferrarifar.jpg" alt="Ferrari Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">FERRARI SF90</h3>
+                        <p class="card__description">
+                            Luxury Sports Car
+                            <br>Price: $507,300
+                            <br>Year: 2024
+                            <br>Type: Hybrid
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 3 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/huracan.jpg" alt="Lamborghini Huracán">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/huracanside.jpg" alt="Lamborghini Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title"> HURACÁN</h3>
+                        <p class="card__description">
+                            Super Sports Car
+                            <br>Price: $428,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 4 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/mclaren.jpg" alt="McLaren 720S">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/mclarenint.jpg" alt="McLaren Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">MCLAREN 720S</h3>
+                        <p class="card__description">
+                            Premium Sports Car
+                            <br>Price: $315,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 5 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/aston.jpg" alt="Aston Martin Vantage">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/astonint.jpg" alt="Aston Martin Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">ASTON MARTIN</h3>
+                        <p class="card__description">
+                            British Sports Car
+                            <br>Price: $142,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 6 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/m8.jpg" alt="BMW M8">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/m8int.jpg" alt="BMW Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">BMW M8 COMPETITION</h3>
+                        <p class="card__description">
+                            German Sports Car
+                            <br>Price: $130,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 7 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/amg.jpg" alt="Mercedes-AMG GT">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/amgback.jpg" alt="Mercedes Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">MERCEDES-AMG GT</h3>
+                        <p class="card__description">
+                            Luxury Sports Car
+                            <br>Price: $118,600
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 8 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/nissan.jpg" alt="Nissan GT-R">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/gtr.jpg" alt="GT-R Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">NISSAN GT-R NISMO</h3>
+                        <p class="card__description">
+                            Japanese Sports Car
+                            <br>Price: $215,690
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 9 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/corv.jpg" alt="Chevrolet Corvette">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/corvint.jpg" alt="Corvette Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">CORVETTE Z06</h3>
+                        <p class="card__description">
+                            American Sports Car
+                            <br>Price: $106,395
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 10 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/lotus.jpg" alt="Lotus Emira">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/lotusred.jpg" alt="Lotus Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">LOTUS EMIRA</h3>
+                        <p class="card__description">
+                            British Sports Car
+                            <br>Price: $93,900
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 11 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/jag.jpg" alt="Jaguar F-Type">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/jagint.jpg" alt="Jaguar Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">JAGUAR F-TYPE R</h3>
+                        <p class="card__description">
+                            British Sports Car
+                            <br>Price: $107,900
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 12 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/alpine.jpg" alt="Alpine A110">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/alpineint.jpg" alt="Alpine Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">ALPINE A110</h3>
+                        <p class="card__description">
+                            French Sports Car
+                            <br>Price: $84,900
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 13 -->
+                <div class="card" data-type="sports" data-fuel="hybrid" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/lexus.jpg" alt="Lexus LC">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/lexusback.jpg" alt="Lexus Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">LEXUS LC 500</h3>
+                        <p class="card__description">
+                            Luxury Sports Car
+                            <br>Price: $93,050
+                            <br>Year: 2024
+                            <br>Type: Hybrid
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 14 -->
+                <div class="card" data-type="sports" data-fuel="hybrid" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/acura.jpg" alt="Acura NSX">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/acuraback.jpg" alt="NSX Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">ACURA NSX TYPE S</h3>
+                        <p class="card__description">
+                            Japanese Sports Car
+                            <br>Price: $169,500
+                            <br>Year: 2024
+                            <br>Type: Hybrid
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 15 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/audi.jpg" alt="Audi R8">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/auditwin.jpg" alt="R8 Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">AUDI R8 GT</h3>
+                        <p class="card__description">
+                            German Sports Car
+                            <br>Price: $249,900
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 16 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/maserati.jpg" alt="Maserati MC20">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/maseratiback.jpg" alt="MC20 Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">MASERATI MC20</h3>
+                        <p class="card__description">
+                            Italian Sports Car
+                            <br>Price: $212,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 17 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/chiron.jpg" alt="Bugatti Chiron">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/chironint.jpg" alt="Bugatti Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">BUGATTI CHIRON</h3>
+                        <p class="card__description">
+                            Hyper Sports Car
+                            <br>Price: $3,825,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 18 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/koinsagen.jpg" alt="Koenigsegg Jesko">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/koinsagenwhite.jpg" alt="Jesko Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">KOENIGSEGG JESKO</h3>
+                        <p class="card__description">
+                            Swedish Hypercar
+                            <br>Price: $3,400,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 19 -->
+                <div class="card" data-type="sports" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/pagani.jpg" alt="Pagani Utopia">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/paganint.jpg" alt="Pagani Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">PAGANI UTOPIA</h3>
+                        <p class="card__description">
+                            Italian Hypercar
+                            <br>Price: $2,190,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sports Car Card 20 -->
+                <div class="card" data-type="sports" data-fuel="electric" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/sports/nivera.jpg" alt="Rimac Nevera">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/sports/niveraint.jpg" alt="Rimac Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">RIMAC NEVERA</h3>
+                        <p class="card__description">
+                            Electric Hypercar
+                            <br>Price: $2,400,000
+                            <br>Year: 2024
+                            <br>Type: Electric
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="nav-button next" id="sportsNextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div class="page-indicator" id="sportsPageIndicator"></div>
+        </div>
+    </section>
+
+    <!-- Lorry Section -->
+    <section id="lorry-section" class="lorry-section">
+        <div class="section-header">
+            <h2 class="section-title">Luxury Truck Collection</h2>
+        </div>
+
+        <div class="carousel-container">
+            <button class="nav-button prev" id="lorryPrevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="suv-showcase" id="lorryShowcase">
+                <!-- Lorry Card 1 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/vol.jpg" alt="Volvo FH16">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/volbon.jpg" alt="Volvo Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">VOLVO FH16 750</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $180,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 2 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/sca.jpg" alt="Scania S730">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/scaview.jpg" alt="Scania Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">SCANIA S730 V8</h3>
+                        <p class="card__description">
+                            Luxury Truck
+                            <br>Price: $195,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 3 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/merc.jpg" alt="Mercedes Actros">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/mectwin.jpg" alt="Actros Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">MERCEDES ACTROS L</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $185,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 4 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/man.jpg" alt="MAN TGX">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/manless.jpg" alt="TGX Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">MAN TGX 18.640</h3>
+                        <p class="card__description">
+                            Luxury Truck
+                            <br>Price: $170,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 5 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/daf.jpg" alt="DAF XG+">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/dafint.jpg" alt="DAF Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">DAF XG+ 530</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $165,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 6 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/ken.jpg" alt="Kenworth W990">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/kenint.jpg" alt="W990 Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">KENWORTH W990</h3>
+                        <p class="card__description">
+                            American Truck
+                            <br>Price: $205,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 7 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/peter.jpg" alt="Peterbilt 389">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/peterin.jpg" alt="389 Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">PETERBILT 389</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $198,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 8 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/cas.jpg" alt="Freightliner Cascadia">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/cascad.jpg" alt="Cascadia Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">FREIGHTLINER</h3>
+                        <p class="card__description">
+                            Modern Truck
+                            <br>Price: $175,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 9 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/star.jpg" alt="Western Star 49X">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/starint.jpg" alt="Western Star Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">WESTERN STAR 49X</h3>
+                        <p class="card__description">
+                            American Truck
+                            <br>Price: $210,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 10 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/volvo.jpg" alt="Volvo FH16">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/volvosec.jpg" alt="Volvo Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">VOLVO FH16 750</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $180,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 11 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/scan.jpg" alt="Scania S730">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/scansec.jpg" alt="Scania Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">SCANIA S730 V8</h3>
+                        <p class="card__description">
+                            Luxury Truck
+                            <br>Price: $195,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 12 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/m.jpg" alt="Mercedes Actros">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/ms.jpg"  alt=Actros Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">MERCEDES ACTROS L</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $185,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 13 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/tg.jpg" alt="MAN TGX">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/tgsec.jpg" alt="TGX Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">MAN TGX</h3>
+                        <p class="card__description">
+                            Luxury Truck
+                            <br>Price: $170,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 14 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/daff.jpg" alt="DAF XG+">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/dafff.jpg" alt="DAF Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">DAF XG+ 530</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $165,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 15 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/15.jpg" alt="Kenworth W990">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/15s.jpg" alt="W990 Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">KENWORTH W990</h3>
+                        <p class="card__description">
+                            American Truck
+                            <br>Price: $205,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 16 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/pet.jpg" alt="Peterbilt 389">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/pp.jpg" alt="389 Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">CLONE 389</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $198,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 17 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/fre.jpg" alt="Freightliner Cascadia">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/free.jpg" alt="Cascadia Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title"> CASCADIA</h3>
+                        <p class="card__description">
+                            Modern Truck
+                            <br>Price: $175,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 18 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/497X.jpg" alt="Western Star 49X">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/497X.jpg" alt="Western Star Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">49X</h3>
+                        <p class="card__description">
+                            American Truck
+                            <br>Price: $210,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 19 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/16.jpg" alt="Volvo FH16">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/16S.jpg" alt="Volvo Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">VOLVO FH16 750</h3>
+                        <p class="card__description">
+                            Premium Truck
+                            <br>Price: $180,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Lorry Card 20 -->
+                <div class="card" data-type="lorry" data-fuel="diesel" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/lorry/17.jpg" alt="Scania S730">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/lorry/17s.jpg" alt="Scania Interior">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">SCANIA S730 V8</h3>
+                        <p class="card__description">
+                            Luxury Truck
+                            <br>Price: $195,000
+                            <br>Year: 2024
+                            <br>Type: Diesel
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="nav-button next" id="lorryNextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Bikes Section -->
+    <section id="bikes-section" class="bikes-section">
+        <div class="section-header">
+            <h2 class="section-title">Premium Bikes Collection</h2>
+        </div>
+
+        <div class="carousel-container">
+            <button class="nav-button prev" id="bikesPrevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="suv-showcase" id="bikesShowcase">
+                <!-- Bike Card 1 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/ducati.jpg" alt="Ducati Panigale">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/duc.jpg" alt="Panigale Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">DUCATI PANIGALE V4 R</h3>
+                        <p class="card__description">
+                            Super Sport Bike
+                            <br>Price: $44,995
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 2 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/bmw.jpg" alt="BMW M1000RR">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/bima.jpg" alt="M1000RR Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">BMW M1000RR</h3>
+                        <p class="card__description">
+                            Premium Sport Bike
+                            <br>Price: $37,990
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 3 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/ninja.jpg" alt="Kawasaki H2R">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/ninja2.jpg" alt="H2R Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">KAWASAKI NINJA H2R</h3>
+                        <p class="card__description">
+                            Track Only Superbike
+                            <br>Price: $55,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 4 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/ap.jpg" alt="Aprilia RSV4">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/ap2.jpg" alt="RSV4 Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">APRILIA RSV4 FACTORY</h3>
+                        <p class="card__description">
+                            Italian Superbike
+                            <br>Price: $25,999
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 5 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/yama.jpg" alt="Yamaha R1M">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/yama2.jpg" alt="R1M Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">YAMAHA YZF-R1M</h3>
+                        <p class="card__description">
+                            Super Sport Bike
+                            <br>Price: $44,995
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 11 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/d.jpg" alt="Ducati Streetfighter V4 SP">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/d2.jpg" alt="V4 SP Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">DUCATI STREETFIGHTER V4 SP</h3>
+                        <p class="card__description">
+                            Naked Superbike
+                            <br>Price: $35,500
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 12 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/norr.jpg" alt="Norton V4SV">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/norr2.jpg" alt="V4SV Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">NORTON V4SV</h3>
+                        <p class="card__description">
+                            British Superbike
+                            <br>Price: $44,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 13 -->
+                <div class="card" data-type="bike" data-fuel="electric" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/e.jpg" alt="Energica Ego">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/e2.jpg" alt="Ego Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">ENERGICA EGO+ RS</h3>
+                        <p class="card__description">
+                            Electric Superbike
+                            <br>Price: $25,600
+                            <br>Year: 2024
+                            <br>Type: Electric
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 14 -->
+                <div class="card" data-type="bike" data-fuel="electric" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/light.jpg" alt="Lightning LS-218">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/light2.jpg" alt="LS-218 Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">LIGHTNING LS-218</h3>
+                        <p class="card__description">
+                            Electric Superbike
+                            <br>Price: $38,888
+                            <br>Year: 2024
+                            <br>Type: Electric
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 15 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/arch.jpg" alt="Arch KRGT-1">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/arch2.jpg" alt="KRGT-1 Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">ARCH KRGT-1</h3>
+                        <p class="card__description">
+                            Performance Cruiser
+                            <br>Price: $85,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 16 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/bimota.jpg" alt="Bimota Tesi H2">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/bimota2.jpg" alt="Tesi Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">BIMOTA TESI H2</h3>
+                        <p class="card__description">
+                            Exotic Superbike
+                            <br>Price: $75,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 17 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/du.jpg" alt="Ducati Superleggera V4">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/du2.jpg" alt="Superleggera Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">DUCATI SUPERLEGGERA V4</h3>
+                        <p class="card__description">
+                            Limited Edition Superbike
+                            <br>Price: $100,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 18 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/vyrus.jpg" alt="Vyrus Alyen">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/vyrus2.jpg" alt="Alyen Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">VYRUS ALYEN 988</h3>
+                        <p class="card__description">
+                            Exotic Superbike
+                            <br>Price: $105,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 19 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/des.jpg" alt="Desmosedici RR">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/des2.jpg" alt="Desmosedici Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">DUCATI DESMOSEDICI RR</h3>
+                        <p class="card__description">
+                            MotoGP Replica
+                            <br>Price: $232,500
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bike Card 20 -->
+                <div class="card" data-type="bike" data-fuel="petrol" data-year="2024">
+                    <div class="card__image">
+                        <img src="../images/inventory/bikes/suter.jpg" alt="Suter MMX 500">
+                    </div>
+                    <div class="card__secondary-image">
+                        <img src="../images/inventory/bikes/suter2.jpg" alt="MMX 500 Detail">
+                    </div>
+                    <div class="card__content">
+                        <h3 class="card__title">SUTER MMX 500</h3>
+                        <p class="card__description">
+                            Racing Legend
+                            <br>Price: $137,000
+                            <br>Year: 2024
+                            <br>Type: Petrol
+                        </p>
+                        <button class="view-details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="nav-button next" id="bikesNextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    
+        <script src="js/inventory.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>

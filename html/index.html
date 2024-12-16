@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-RIDES AUTOMOTIVES </title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/services.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/features.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/inventory.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-car"></i>
+            <span>E-RIDES AUTOMOTIVES</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="inventory.html" class="nav-link">Inventory</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h3 class="hero-message">WELCOME TO E-RIDES AUTOMOTIVES. NEED FOR SPEED...?? WE GATCHU</h3>
+            <div class="hero-buttons">
+                <a href="inventory.html" class="btn primary">View Inventory</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-system">
+        <div class="section-header">
+            <h2>Quick Booking</h2>
+            <p>Reserve your dream car in minutes</p>
+        </div>
+        
+        <div class="price-calculator">
+            <div class="calculator-container">
+                <!-- Calculator Form -->
+                <div class="calculator-form">
+                    <div class="calc-group">
+                        <label for="rental-days">
+                            <i class="fas fa-calendar"></i>
+                            Rental Days
+                        </label>
+                        <input type="number" id="rental-days" class="calc-control" min="1" value="1">
+                    </div>
+
+                    <div class="calc-group">
+                        <label for="car-type">
+                            <i class="fas fa-car"></i>
+                            Car Type
+                        </label>
+                        <select id="car-type" class="calc-control">
+                            <option value="economy">Economy</option>
+                            <option value="midsize">Midsize</option>
+                            <option value="luxury">Luxury</option>
+                        </select>
+                    </div>
+
+                    <div class="calc-group">
+                        <label for="insurance-type">
+                            <i class="fas fa-shield-alt"></i>
+                            Insurance Type
+                        </label>
+                        <select id="insurance-type" class="calc-control">
+                            <option value="basic">Basic</option>
+                            <option value="premium">Premium</option>
+                            <option value="full">Full Coverage</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="price-breakdown">
+                    <div class="breakdown-item">
+                        <span>Base Rate:</span>
+                        <span id="base-price">$50</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Insurance:</span>
+                        <span id="insurance-price">$10</span>
+                    </div>
+                    <div class="breakdown-total">
+                        <span>Total:</span>
+                        <span id="total-price">$60</span>
+                    </div>
+                    <button class="btn-reserve">Reserve Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="price-calculator">
+        <div class="section-header">
+            <h2>Calculate Your Rental</h2>
+            <p>Get an instant quote for your rental period</p>
+        </div>
+        <div class="calculator-container">
+            <div class="calculator-form">
+                <div class="calc-group">
+                    <label><i class="fas fa-car-side"></i> Select Vehicle</label>
+                    <select id="car-type" class="calc-control">
+                        <option value="">Choose a vehicle</option>
+                        <option value="50">Economy - $50/day</option>
+                        <option value="75">Standard - $75/day</option>
+                        <option value="100">Luxury - $100/day</option>
+                        <option value="150">Premium SUV - $150/day</option>
+                    </select>
+                </div>
+                <div class="calc-group">
+                    <label><i class="fas fa-calendar-day"></i> Rental Duration</label>
+                    <input type="number" id="days" class="calc-control" placeholder="Number of days" min="1">
+                </div>
+                <div class="calc-group">
+                    <label><i class="fas fa-shield-alt"></i> Insurance Package</label>
+                    <select id="insurance" class="calc-control">
+                        <option value="0">No Insurance</option>
+                        <option value="15">Basic - $15/day</option>
+                        <option value="25">Premium - $25/day</option>
+                    </select>
+                </div>
+            </div>
+            <div class="price-display">
+                <div class="price-breakdown">
+                    <div class="breakdown-item">
+                        <span>Base Rate:</span>
+                        <span id="base-price">$0</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>Insurance:</span>
+                        <span id="insurance-price">$0</span>
+                    </div>
+                    <div class="breakdown-total">
+                        <span>Total:</span>
+                        <span id="total-price">$0</span>
+                    </div>
+                </div>
+                <button class="btn-reserve">
+                    <span>Reserve Now</span>
+                    <i class="fas fa-check-circle"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="special-offers">
+        <div class="section-header">
+            <h2>Special Offers</h2>
+            <p>Exclusive deals and limited-time offers</p>
+        </div>
+
+        <div class="offers-grid">
+            <!-- Offer Card 1 -->
+            <div class="offer-card">
+                <div class="offer-badge">20% OFF</div>
+                <img src="images/offer-car1.jpg" alt="Weekend Special">
+                <div class="offer-content">
+                    <h3>Weekend Special</h3>
+                    <p class="offer-price">From $49/day</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Free GPS Navigation</li>
+                        <li><i class="fas fa-check"></i> Unlimited Mileage</li>
+                        <li><i class="fas fa-check"></i> Free Cancellation</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                    </ul>
+                    <button class="btn-offer">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Offer Card 2 -->
+            <div class="offer-card">
+                <div class="offer-badge">FREE UPGRADE</div>
+                <img src="images/offer-car2.jpg" alt="Business Deal">
+                <div class="offer-content">
+                    <h3>Business Deal</h3>
+                    <p class="offer-price">From $75/day</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Premium Vehicle</li>
+                        <li><i class="fas fa-check"></i> Airport Pickup</li>
+                        <li><i class="fas fa-check"></i> WiFi Included</li>
+                        <li><i class="fas fa-check"></i> Priority Service</li>
+                    </ul>
+                    <button class="btn-offer">Book Now</button>
+                </div>
+            </div>
+
+            <!-- Offer Card 3 -->
+            <div class="offer-card">
+                <div class="offer-badge">SAVE 30%</div>
+                <img src="images/offer-car3.jpg" alt="Long Term Rental">
+                <div class="offer-content">
+                    <h3>Long Term Rental</h3>
+                    <p class="offer-price">From $35/day</p>
+                    <ul class="offer-features">
+                        <li><i class="fas fa-check"></i> Monthly Rates</li>
+                        <li><i class="fas fa-check"></i> Maintenance Included</li>
+                        <li><i class="fas fa-check"></i> Flexible Terms</li>
+                        <li><i class="fas fa-check"></i> Insurance Included</li>
+                    </ul>
+                    <button class="btn-offer">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>Customer Reviews</h2>
+            <p>What our clients say about us</p>
+        </div>
+
+        <div class="testimonials-container">
+            <button class="nav-btn prev-btn" aria-label="Previous review">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="testimonials-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="client-comment">
+                        <p>"Exceptional service! The car was in perfect condition and the rental process was smooth and efficient. Highly recommended!"</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="images/client1.jpg" alt="John Doe" class="client-image">
+                        <div class="client-details">
+                            <h4>John Doe</h4>
+                            <p>Business Executive</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="client-comment">
+                        <p>"Great prices and even better customer service. The staff went above and beyond to ensure I had the perfect vehicle for my needs."</p>
+                    </div>
+                    <div class="client-info">
+                        <img src="images/client2.jpg" alt="Jane Smith" class="client-image">
+                        <div class="client-details">
+                            <h4>Jane Smith</h4>
+                            <p>Travel Blogger</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <!-- Similar structure as above -->
+                </div>
+            </div>
+
+            <button class="nav-btn next-btn" aria-label="Next review">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="testimonial-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common questions about our services</p>
+        </div>
+
+        <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What documents do I need to rent a car?</h3>
+                    <span class="faq-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>To rent a car, you'll need:</p>
+                    <ul>
+                        <li>Valid driver's license</li>
+                        <li>Credit card in the renter's name</li>
+                        <li>Proof of insurance</li>
+                        <li>Valid ID or passport</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is your cancellation policy?</h3>
+                    <span class="faq-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>Free cancellation up to 24 hours before pickup. Cancellations within 24 hours may be subject to a fee.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is insurance included in the rental price?</h3>
+                    <span class="faq-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </div>
+                <div class="faq-answer">
+                    <p>Basic insurance is included. Additional coverage options are available for purchase.</p>
+                </div>
+            </div>
+
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </section>
+
+    <section class="membership-section">
+        <div class="section-header">
+            <h2>Membership Plans</h2>
+            <p>Choose the perfect plan for your needs</p>
+        </div>
+
+        <div class="membership-container">
+            <!-- Basic Plan -->
+            <div class="membership-card">
+                <div class="plan-header">
+                    <h3>Basic</h3>
+                    <div class="plan-price">
+                        <span class="currency">$</span>
+                        <span class="amount">29</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Standard Vehicle Selection</li>
+                        <li><i class="fas fa-check"></i> Basic Insurance Coverage</li>
+                        <li><i class="fas fa-check"></i> 24/7 Customer Support</li>
+                        <li><i class="fas fa-check"></i> Free Cancellation</li>
+                    </ul>
+                </div>
+                <button class="plan-button">Select Plan</button>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="membership-card featured">
+                <div class="featured-badge">Popular</div>
+                <div class="plan-header">
+                    <h3>Premium</h3>
+                    <div class="plan-price">
+                        <span class="currency">$</span>
+                        <span class="amount">49</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Premium Vehicle Selection</li>
+                        <li><i class="fas fa-check"></i> Full Insurance Coverage</li>
+                        <li><i class="fas fa-check"></i> Priority Customer Support</li>
+                        <li><i class="fas fa-check"></i> Free Upgrades</li>
+                        <li><i class="fas fa-check"></i> Airport Pickup Service</li>
+                    </ul>
+                </div>
+                <button class="plan-button featured">Select Plan</button>
+            </div>
+
+            <!-- Business Plan -->
+            <div class="membership-card">
+                <div class="plan-header">
+                    <h3>Business</h3>
+                    <div class="plan-price">
+                        <span class="currency">$</span>
+                        <span class="amount">99</span>
+                        <span class="period">/month</span>
+                    </div>
+                </div>
+                <div class="plan-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Luxury Vehicle Selection</li>
+                        <li><i class="fas fa-check"></i> Premium Insurance Package</li>
+                        <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                        <li><i class="fas fa-check"></i> Corporate Billing</li>
+                        <li><i class="fas fa-check"></i> Multiple Driver Options</li>
+                    </ul>
+                </div>
+                <button class="plan-button">Select Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="insurance-section">
+        <div class="section-header">
+            <h2>Insurance Coverage</h2>
+            <p>Protect your journey with our comprehensive insurance plans</p>
+        </div>
+
+        <div class="insurance-container">
+            <!-- Basic Coverage -->
+            <div class="insurance-card">
+                <div class="insurance-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Basic Coverage</h3>
+                <div class="insurance-price">
+                    <span class="amount">$10</span>
+                    <span class="period">/day</span>
+                </div>
+                <div class="coverage-details">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Liability Coverage</li>
+                        <li><i class="fas fa-check"></i> Collision Damage Waiver</li>
+                        <li><i class="fas fa-check"></i> 24/7 Roadside Assistance</li>
+                        <li><i class="fas fa-check"></i> Basic Theft Protection</li>
+                    </ul>
+                </div>
+                <button class="insurance-btn">Select Coverage</button>
+            </div>
+
+            <!-- Premium Coverage -->
+            <div class="insurance-card featured">
+                <div class="featured-tag">Recommended</div>
+                <div class="insurance-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Premium Coverage</h3>
+                <div class="insurance-price">
+                    <span class="amount">$20</span>
+                    <span class="period">/day</span>
+                </div>
+                <div class="coverage-details">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Extended Liability Coverage</li>
+                        <li><i class="fas fa-check"></i> Full Collision Coverage</li>
+                        <li><i class="fas fa-check"></i> Premium Roadside Support</li>
+                        <li><i class="fas fa-check"></i> Full Theft Protection</li>
+                        <li><i class="fas fa-check"></i> Personal Effects Coverage</li>
+                    </ul>
+                </div>
+                <button class="insurance-btn featured">Select Coverage</button>
+            </div>
+
+            <!-- Full Coverage -->
+            <div class="insurance-card">
+                <div class="insurance-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Full Coverage</h3>
+                <div class="insurance-price">
+                    <span class="amount">$35</span>
+                    <span class="period">/day</span>
+                </div>
+                <div class="coverage-details">
+                    <ul>
+                        <li><i class="fas fa-check"></i> All Premium Coverage Benefits</li>
+                        <li><i class="fas fa-check"></i> Extended Liability Coverage</li>
+                        <li><i class="fas fa-check"></i> Multiple Driver Coverage</li>
+                        <li><i class="fas fa-check"></i> Business Interruption Coverage</li>
+                        <li><i class="fas fa-check"></i> Priority Claims Processing</li>
+                    </ul>
+                </div>
+                <button class="insurance-btn">Select Coverage</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/topa.js"></script>
+    <script src="js/features.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/comparison.js"></script>
+    <script src="js/faq.js"></script>
+    <script src="js/testimonials.js"></script>
+</body>
+</html>

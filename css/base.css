@@ -1,0 +1,82 @@
+/* CSS Reset and Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --primary: #3498db;
+    --primary-dark: #2980b9;
+    --secondary: #2ecc71;
+    --accent: #f1c40f;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-light: #888888;
+    --bg-main: #ffffff;
+    --bg-card: #f8f9fa;
+    --bg-dark: #f0f2f5;
+    --border: #dddddd;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+    
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    
+    /* Radii */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 20px;
+    
+    --primary-color: #1100ff;
+    --primary-dark: #0c00b3;
+    --text-primary: #333;
+    --section-bg: #f8f9fa;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    /* Background Colors */
+    --bg-main: #1a1a1a;
+    --bg-card: #242424;
+    --bg-dark: #2a2a2a;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-light: #999999;
+    
+    /* Border & Shadow */
+    --border: #333333;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    color: var(--text-primary);
+    background: var(--bg-main);
+}
+
+.container {
+    width: min(100% - 2rem, 1200px);
+    margin-inline: auto;
+    padding: var(--space-md);
+}
