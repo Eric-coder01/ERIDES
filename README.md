@@ -1,5 +1,7 @@
 # E-RIDES Automotives
 
+[![Static site checks](https://github.com/Nexora-CyberX/ERIDES/actions/workflows/static-site-checks.yml/badge.svg?branch=main)](https://github.com/Nexora-CyberX/ERIDES/actions/workflows/static-site-checks.yml)
+
 E-RIDES is a multi-page automotive website concept built as a front-end portfolio project and a possible foundation for a future automotive business website.
 
 The project demonstrates page structure, responsive styling, browser-side interactions, inventory filtering interfaces, and rental-price calculation UI.
@@ -11,6 +13,10 @@ The project demonstrates page structure, responsive styling, browser-side intera
 - **Rental calculator UI** with rental duration, vehicle category, insurance selection, and a price breakdown.
 - **Services and contact pages** presenting service information and an enquiry interface.
 - **Theme control** and responsive CSS.
+
+## Project case study
+
+See [the E-RIDES project case study](docs/PROJECT-CASE-STUDY.md) for the project goal, structure, engineering improvements, automated validation, limitations, and next steps.
 
 ## Technology
 
@@ -50,7 +56,7 @@ ERIDES/
 ├── html/       # Website pages
 ├── css/        # Page styles, components, responsive rules
 ├── JS/         # Browser-side interactions
-├── images/     # Project imagery
+├── images/     # Website imagery
 ├── docs/       # Project notes and readiness documentation
 ├── scripts/    # Supporting scripts
 └── README.md
