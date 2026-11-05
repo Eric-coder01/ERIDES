@@ -13,14 +13,14 @@ for (const file of htmlFiles) {
     const source = fs.readFileSync(file, 'utf8');
     const relativeFile = path.relative(root, file);
 
-    const ids = [...source.matchAll(/\\bid=["']([^"']+)["']/g)].map((match) => match[1]);
+    const ids = [...source.matchAll(/\bid=["']([^"']+)["']/g)].map((match) => match[1]);
     const seenIds = new Set();
     for (const id of ids) {
         if (seenIds.has(id)) errors.push(`${relativeFile}: duplicate id "${id}"`);
         seenIds.add(id);
     }
 
-    const assetRefs = [...source.matchAll(/\\b(?:src|href)=["']([^"']+)["']/g)]
+    const assetRefs = [...source.matchAll(/\b(?:src|href)=["']([^"']+)["']/g)]
         .map((match) => match[1]);
 
     for (const reference of assetRefs) {
