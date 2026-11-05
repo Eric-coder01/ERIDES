@@ -15,7 +15,7 @@ function checkLocalReference(reference, sourceFile, label) {
     if (!cleanReference) return;
     const localPath = path.resolve(path.dirname(sourceFile), cleanReference);
     if (!localPath.startsWith(root + path.sep) || !fs.existsSync(localPath)) {
-        errors.push(\`\${path.relative(root, sourceFile)}: missing or invalid \${label} "\${reference}"\`);
+        errors.push(path.relative(root, sourceFile) + ': missing or invalid ' + label + ' "' + reference + '"');
     }
 }
 
@@ -25,7 +25,7 @@ for (const file of htmlFiles) {
     const seenIds = new Set();
 
     for (const id of ids) {
-        if (seenIds.has(id)) errors.push(\`\${path.relative(root, file)}: duplicate id "\${id}"\`);
+        if (seenIds.has(id)) errors.push(path.relative(root, file) + ': duplicate id "' + id + '"');
         seenIds.add(id);
     }
 
@@ -55,8 +55,8 @@ if (fs.existsSync(cssDirectory)) {
 
 if (errors.length) {
     console.error('Static-site checks failed:');
-    for (const error of errors) console.error(\`- \${error}\`);
+    for (const error of errors) console.error('- ' + error);
     process.exitCode = 1;
 } else {
-    console.log(\`Static-site checks passed for \${htmlFiles.length} HTML pages and local CSS assets.\`);
+    console.log('Static-site checks passed for ' + htmlFiles.length + ' HTML pages and local CSS assets.');
 }
