@@ -27,3 +27,18 @@
 ## Validation status
 
 The repository has a new automated check for local HTML assets and duplicate IDs, plus JavaScript syntax checks in GitHub Actions. A passing workflow run and real browser testing are still required before calling the site production-ready.
+
+
+## Stage 3 – demo/live readiness and stronger validation
+
+- Confirmed the product direction is both a portfolio demonstration and a future business-ready foundation.
+- Added `docs/DEMO-TO-LIVE-PLAN.md` with explicit demo-mode rules, live prerequisites, integration boundaries, and release gates.
+- Extended `scripts/check-site.js` to validate local assets referenced by CSS `url(...)` declarations as well as HTML `src`/`href` references and duplicate IDs.
+- The site remains in DEMO mode. No real contact, booking, payment, map, or tracking provider is claimed to be connected.
+
+## Remaining release blockers
+
+- Add automated tests for interactive page behaviour and accessibility checks.
+- Complete manual browser, mobile, keyboard, and screen-reader testing.
+- Supply verified business information and configure provider accounts before enabling live workflows.
+- Review the latest GitHub Actions results after the Stage 3 commits.
