@@ -60,6 +60,14 @@ const mapStyle = [
 
 // Initialize the map
 function initMap() {
+    const mapContainer = document.getElementById('serviceMap');
+    if (!mapContainer) return;
+
+    if (!window.google || !window.google.maps) {
+        mapContainer.textContent = 'Map preview is unavailable. Configure a valid Google Maps API key and verify the service-centre address to enable it.';
+        return;
+    }
+
     // Service center location (Nairobi coordinates - update with your location)
     const serviceCenter = { 
         lat: -1.2921, 
@@ -176,7 +184,7 @@ function openDirections() {
 
 // Handle map resize
 function handleMapResize() {
-    if (map) {
+    if (map && window.google && window.google.maps) {
         const center = map.getCenter();
         google.maps.event.trigger(map, 'resize');
         map.setCenter(center);
