@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalPrice = document.getElementById('total-price');
 
         function calculatePrice() {
-            const days = parseInt(document.getElementById('rental-days').value) || 0;
+            const daysInput = document.getElementById('rental-days');
+            const days = Math.max(0, parseInt(daysInput?.value, 10) || 0);
             const carType = document.getElementById('car-type').value;
             const insurance = document.getElementById('insurance-type').value;
 
@@ -28,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 full: 30
             };
 
-            const baseCost = days * rates[carType];
-            const insuranceCost = days * insuranceRates[insurance];
+            const baseCost = days * (rates[carType] || 0);
+            const insuranceCost = days * (insuranceRates[insurance] || 0);
             const total = baseCost + insuranceCost;
 
             basePrice.textContent = `$${baseCost}`;
@@ -37,7 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
             totalPrice.textContent = `$${total}`;
         }
 
-        inputs.forEach(input => input.addEventListener('change', calculatePrice));
+        inputs.forEach(input => {
+            input.addEventListener('input', calculatePrice);
+            input.addEventListener('change', calculatePrice);
+        });
+        calculatePrice();
     };
 
     // FAQ Accordion
@@ -45,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
+            if (!question) return;
             question.addEventListener('click', () => {
                 const isOpen = item.classList.contains('active');
                 // Close all items
@@ -63,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
         let currentSlide = 0;
+
+        if (!slider || cards.length === 0) return;
 
         function showSlide(index) {
             cards.forEach(card => card.classList.remove('active'));
@@ -94,10 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Auto-play (optional)
-        const autoPlay = setInterval(nextSlide, 5000);
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const autoPlay = prefersReducedMotion ? null : setInterval(nextSlide, 5000);
 
-        // Pause auto-play on hover
-        slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
+        // Pause auto-play on hover and when the user focuses the slider
+        if (autoPlay) {
+            slider.addEventListener('mouseenter', () => clearInterval(autoPlay), { once: true });
+            slider.addEventListener('focusin', () => clearInterval(autoPlay), { once: true });
+        }
 
         // Initial state
         showSlide(currentSlide);

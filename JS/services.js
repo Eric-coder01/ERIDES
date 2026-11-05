@@ -60,10 +60,24 @@ const mapStyle = [
 
 // Initialize the map
 function initMap() {
-    // Service center location (Nairobi coordinates - update with your location)
-    const serviceCenter = { 
-        lat: -1.2921, 
-        lng: 36.8219 
+    const mapContainer = document.getElementById('serviceMap');
+    if (!mapContainer) return;
+
+    const mapConfig = window.ERIDES_MAP_CONFIG;
+    if (!mapConfig || !Number.isFinite(Number(mapConfig.lat)) ||
+        !Number.isFinite(Number(mapConfig.lng)) || !mapConfig.address) {
+        mapContainer.textContent = 'Map preview is unavailable until the real service-centre address and coordinates are configured.';
+        return;
+    }
+
+    if (!window.google || !window.google.maps) {
+        mapContainer.textContent = 'Map preview is unavailable. Add a valid Google Maps API key to enable it.';
+        return;
+    }
+
+    const serviceCenter = {
+        lat: Number(mapConfig.lat),
+        lng: Number(mapConfig.lng)
     };
 
     // Map configuration options
@@ -130,9 +144,7 @@ function initMap() {
     const infoWindowContent = `
         <div class="map-info-window">
             <h3>E-RIDES Service Center</h3>
-            <p><i class="fas fa-clock"></i> 24/7 Emergency Service</p>
-            <p><i class="fas fa-phone"></i> 1-800-ERIDES</p>
-            <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+            <p><i class="fas fa-map-marker-alt"></i> ${mapConfig.address}</p>
             <button onclick="openDirections()" class="directions-btn">
                 Get Directions
             </button>
@@ -170,13 +182,15 @@ function initMap() {
 
 // Function to open directions in Google Maps
 function openDirections() {
-    const destination = encodeURIComponent('E-RIDES Service Center, Nairobi');
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
+    const address = window.ERIDES_MAP_CONFIG?.address;
+    if (!address) return;
+    const destination = encodeURIComponent(address);
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank', 'noopener,noreferrer');
 }
 
 // Handle map resize
 function handleMapResize() {
-    if (map) {
+    if (map && window.google && window.google.maps) {
         const center = map.getCenter();
         google.maps.event.trigger(map, 'resize');
         map.setCenter(center);

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultCount = document.getElementById('resultCount');
 
     // Get all vehicle cards from the correct containers
-    const allVehicleCards = document.querySelectorAll('#suvCardsContainer .card, #sportsShowcase .card');
+    const allVehicleCards = document.querySelectorAll('.vehicle-section .card');
 
     function filterVehicles() {
         const searchTerm = vehicleSearch.value.toLowerCase();
@@ -79,18 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!searchSummary) return;
 
         if (count === 0) {
-            searchSummary.innerHTML = `
-                <div class="search-summary-text">
-                    No vehicles found matching your criteria
-                </div>
-            `;
+            searchSummary.textContent = 'No vehicles found matching your criteria';
         } else {
             const vehicleList = vehicles.slice(0, 3).join(', ');
-            searchSummary.innerHTML = `
-                <div class="search-summary-text">
-                    Found ${count} vehicles${count > 3 ? ', including: ' + vehicleList + '...' : ': ' + vehicleList}
-                </div>
-            `;
+            searchSummary.textContent = `Found ${count} vehicles${count > 3 ? ', including: ' + vehicleList + '...' : ': ' + vehicleList}`;
         }
         searchSummary.classList.add('active');
     }

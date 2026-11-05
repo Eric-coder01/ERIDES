@@ -1,6 +1,6 @@
 # E-RIDES Automotives
 
-A front-end automotive website project for showcasing vehicles and presenting automotive services. The site is organised into separate pages for the home page, vehicle inventory, services, and contact information.
+A front-end automotive website project designed for both a portfolio demonstration and a future automotive business website. The site is organised into separate pages for the home page, vehicle inventory, services, and contact information.
 
 ## Features
 
@@ -11,7 +11,11 @@ A front-end automotive website project for showcasing vehicles and presenting au
 - **Contact page** for customer enquiries.
 - **Theme control** and responsive styling.
 
-> These are features represented in the current source files. Booking, contact, and service actions may need backend integration before they can process real customer requests.
+## Current operating mode: DEMO
+
+E-RIDES is currently a portfolio demonstration and a foundation for a future business website. Business contact details and provider accounts have not been verified or configured. Sample listings, prices, offers, testimonials, and service content must not be treated as live business information. Contact, booking, payment, maps, and service-tracking workflows are not connected to real providers and do not complete real transactions.
+
+See [the demo-to-live readiness plan](docs/DEMO-TO-LIVE-PLAN.md) before configuring or publishing any live customer workflow.
 
 ## Project structure
 
@@ -77,6 +81,7 @@ Before submitting changes, verify that:
 - Inventory filters and calculators behave as expected.
 - Layouts work on mobile and desktop.
 - Forms and booking actions clearly indicate whether they are demonstrations or connected to a real backend.
+- Demo content is clearly separated from verified business information.
 - No private credentials or personal information are committed.
 
 ## License
