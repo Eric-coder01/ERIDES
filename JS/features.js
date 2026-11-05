@@ -8,34 +8,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const basePrice = document.getElementById('base-price');
         const insurancePrice = document.getElementById('insurance-price');
         const totalPrice = document.getElementById('total-price');
+        const daysInput = document.getElementById('rental-days');
+        const carTypeInput = document.getElementById('car-type');
+        const insuranceInput = document.getElementById('insurance-type');
+
+        if (!basePrice || !insurancePrice || !totalPrice ||
+            !daysInput || !carTypeInput || !insuranceInput) return;
 
         function calculatePrice() {
-            const daysInput = document.getElementById('rental-days');
-            const days = Math.max(0, parseInt(daysInput?.value, 10) || 0);
-            const carType = document.getElementById('car-type').value;
-            const insurance = document.getElementById('insurance-type').value;
+            const days = Math.max(1, parseInt(daysInput.value, 10) || 1);
+            const carType = carTypeInput.value;
+            const insurance = insuranceInput.value;
 
-            // Base rates per day
-            const rates = {
-                economy: 50,
-                midsize: 75,
-                luxury: 100
-            };
-
-            // Insurance rates per day
-            const insuranceRates = {
-                basic: 10,
-                premium: 20,
-                full: 30
-            };
+            const rates = { economy: 50, midsize: 75, luxury: 100 };
+            const insuranceRates = { basic: 10, premium: 20, full: 30 };
 
             const baseCost = days * (rates[carType] || 0);
             const insuranceCost = days * (insuranceRates[insurance] || 0);
-            const total = baseCost + insuranceCost;
 
             basePrice.textContent = `$${baseCost}`;
             insurancePrice.textContent = `$${insuranceCost}`;
-            totalPrice.textContent = `$${total}`;
+            totalPrice.textContent = `$${baseCost + insuranceCost}`;
         }
 
         inputs.forEach(input => {
@@ -51,11 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             if (!question) return;
+
             question.addEventListener('click', () => {
                 const isOpen = item.classList.contains('active');
-                // Close all items
-                faqItems.forEach(i => i.classList.remove('active'));
-                // Open clicked item if it wasn't open
+                faqItems.forEach(otherItem => otherItem.classList.remove('active'));
                 if (!isOpen) item.classList.add('active');
             });
         });
@@ -64,58 +56,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // Testimonials Slider
     const initTestimonials = () => {
         const slider = document.querySelector('.testimonials-slider');
-        const cards = document.querySelectorAll('.testimonial-card');
-        const dots = document.querySelectorAll('.dot');
+        if (!slider) return;
+
+        // Ignore unfinished placeholder cards so the slider never displays a blank slide.
+        const cards = [...slider.querySelectorAll('.testimonial-card')].filter(card => {
+            const comment = card.querySelector('.client-comment')?.textContent.trim();
+            const author = card.querySelector('.client-details')?.textContent.trim();
+            return Boolean(comment && author);
+        });
+        const dots = [...document.querySelectorAll('.testimonial-dots .dot')];
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
-        let currentSlide = 0;
 
-        if (!slider || cards.length === 0) return;
+        if (cards.length === 0) return;
+
+        let currentSlide = 0;
+        let autoPlayId = null;
+
+        dots.forEach((dot, index) => {
+            dot.hidden = index >= cards.length;
+            if (index >= cards.length) return;
+
+            dot.setAttribute('role', 'button');
+            dot.setAttribute('tabindex', '0');
+            dot.setAttribute('aria-label', `Show testimonial ${index + 1}`);
+        });
 
         function showSlide(index) {
-            cards.forEach(card => card.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            cards[index].classList.add('active');
-            dots[index].classList.add('active');
+            currentSlide = (index + cards.length) % cards.length;
+            cards.forEach((card, cardIndex) => {
+                const active = cardIndex === currentSlide;
+                card.classList.toggle('active', active);
+                card.setAttribute('aria-hidden', String(!active));
+            });
+            dots.forEach((dot, dotIndex) => {
+                if (dotIndex < cards.length) {
+                    dot.classList.toggle('active', dotIndex === currentSlide);
+                    dot.setAttribute('aria-pressed', String(dotIndex === currentSlide));
+                }
+            });
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % cards.length;
-            showSlide(currentSlide);
-        }
+        const nextSlide = () => showSlide(currentSlide + 1);
+        const prevSlide = () => showSlide(currentSlide - 1);
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + cards.length) % cards.length;
-            showSlide(currentSlide);
-        }
-
-        // Event Listeners
         nextBtn?.addEventListener('click', nextSlide);
         prevBtn?.addEventListener('click', prevSlide);
 
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
+            if (index >= cards.length) return;
+            dot.addEventListener('click', () => showSlide(index));
+            dot.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    showSlide(index);
+                }
             });
         });
 
-        // Auto-play (optional)
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const autoPlay = prefersReducedMotion ? null : setInterval(nextSlide, 5000);
-
-        // Pause auto-play on hover and when the user focuses the slider
-        if (autoPlay) {
-            slider.addEventListener('mouseenter', () => clearInterval(autoPlay), { once: true });
-            slider.addEventListener('focusin', () => clearInterval(autoPlay), { once: true });
+        if (!prefersReducedMotion && cards.length > 1) {
+            autoPlayId = window.setInterval(nextSlide, 5000);
+            const pauseAutoPlay = () => {
+                if (autoPlayId !== null) {
+                    window.clearInterval(autoPlayId);
+                    autoPlayId = null;
+                }
+            };
+            slider.addEventListener('mouseenter', pauseAutoPlay, { once: true });
+            slider.addEventListener('focusin', pauseAutoPlay, { once: true });
         }
 
-        // Initial state
-        showSlide(currentSlide);
+        showSlide(0);
     };
 
-    // Initialize all features
     initPriceCalculator();
     initFAQ();
     initTestimonials();
