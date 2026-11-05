@@ -1,89 +1,77 @@
 # E-RIDES Automotives
 
-A front-end automotive website project designed for both a portfolio demonstration and a future automotive business website. The site is organised into separate pages for the home page, vehicle inventory, services, and contact information.
+E-RIDES is a multi-page automotive website concept built as a front-end portfolio project and a possible foundation for a future automotive business website.
 
-## Features
+The project demonstrates page structure, responsive styling, browser-side interactions, inventory filtering interfaces, and rental-price calculation UI.
 
-- **Home page** with the E-RIDES Automotives introduction and navigation.
-- **Vehicle inventory** with vehicle categories and search/filter controls for price, type, fuel, and year.
-- **Rental tools** with rental-duration, vehicle-category, and insurance selections and price-calculation interfaces.
-- **Services page** presenting vehicle protection, inspection, and emergency-service information.
-- **Contact page** for customer enquiries.
-- **Theme control** and responsive styling.
+## Project highlights
 
-## Current operating mode: DEMO
+- **Home page** introducing the E-RIDES concept.
+- **Vehicle inventory** with category and search/filter interfaces for price, type, fuel, and year.
+- **Rental calculator UI** with rental duration, vehicle category, insurance selection, and a price breakdown.
+- **Services and contact pages** presenting service information and an enquiry interface.
+- **Theme control** and responsive CSS.
 
-E-RIDES is currently a portfolio demonstration and a foundation for a future business website. Business contact details and provider accounts have not been verified or configured. Sample listings, prices, offers, testimonials, and service content must not be treated as live business information. Contact, booking, payment, maps, and service-tracking workflows are not connected to real providers and do not complete real transactions.
+## Technology
 
-See [the demo-to-live readiness plan](docs/DEMO-TO-LIVE-PLAN.md) before configuring or publishing any live customer workflow.
+- HTML5
+- CSS3
+- JavaScript
+- Optional Python utility for a separate barcode API experiment
 
-## Project structure
+## Demo status and limitations
 
-```text
-ERIDES/
-├── html/       # Home, inventory, services, and contact pages
-├── css/        # Page styles, components, and responsive rules
-├── JS/         # Browser-side interactions
-├── images/     # Website images
-├── requirements.txt
-└── README.md
-```
+**This repository is a demonstration, not a live car-rental platform.**
 
-## Getting started
+Vehicle listings, prices, offers, testimonials, and service descriptions are sample content. The booking, payment, contact, mapping, and tracking workflows are not connected to production services and do not complete real transactions. Do not rely on the sample business information as verified.
 
-The website's main pages are static HTML, CSS, and JavaScript.
+Before presenting this project as production-ready, the remaining work includes connecting and testing a backend, validating all business content, implementing secure form handling, and completing accessibility and cross-device testing.
+
+## Run locally
+
+The main website is static HTML, CSS, and JavaScript.
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Eric-coder01/ERIDES.git
+   git clone https://github.com/Nexora-CyberX/ERIDES.git
    cd ERIDES
    ```
 
-2. Open `html/index.html` in a browser. For local development, serve the repository folder with a local static server such as VS Code Live Server.
-3. Navigate through Home, Inventory, Services, and Contact.
+2. Open `html/index.html` in a browser, or serve the repository folder with a local development server such as VS Code Live Server.
+3. Explore the Home, Inventory, Services, and Contact pages.
 
-No Node.js installation is required for the basic static pages.
+No Node.js installation is required for the basic static website.
 
-## Optional barcode API script
+## Repository structure
 
-The repository also contains `css/api.py`, a separate Python utility that calls the PDF417 Pro barcode API. It is not required to run the website.
+```text
+ERIDES/
+├── html/       # Website pages
+├── css/        # Page styles, components, responsive rules
+├── JS/         # Browser-side interactions
+├── images/     # Project imagery
+├── docs/       # Project notes and readiness documentation
+├── scripts/    # Supporting scripts
+└── README.md
+```
 
-1. Install Python 3.9 or newer.
-2. Install its dependency:
+## Optional barcode API utility
 
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
+A separate Python utility is included in the repository. It is not required to run the website. Follow the script's own setup instructions and keep provider tokens in environment variables.
 
-3. Set the API token in your environment:
-
-   **Linux/macOS**
-   ```bash
-   export PDF417_API_TOKEN="your-provider-token"
-   python css/api.py
-   ```
-
-   **PowerShell**
-   ```powershell
-   $env:PDF417_API_TOKEN = "your-provider-token"
-   python css/api.py
-   ```
-
-Never put a real token in source code, README files, screenshots, or commits. The previous hard-coded credential must be revoked or rotated with the provider. Removing a credential from the latest file does not remove it from Git history.
+Never commit real API tokens or credentials. If a credential was ever committed, revoke or rotate it with the provider; deleting it from the latest file does not remove it from Git history.
 
 ## Development checklist
 
-Before submitting changes, verify that:
-
-- Navigation links work across all pages.
-- CSS and JavaScript asset paths resolve correctly.
-- Inventory filters and calculators behave as expected.
-- Layouts work on mobile and desktop.
-- Forms and booking actions clearly indicate whether they are demonstrations or connected to a real backend.
-- Demo content is clearly separated from verified business information.
-- No private credentials or personal information are committed.
+- [ ] Verify navigation and all asset paths on every page.
+- [ ] Test inventory filters and calculator behavior.
+- [ ] Test responsive layouts on mobile and desktop.
+- [ ] Check keyboard navigation, labels, contrast, and screen-reader semantics.
+- [ ] Ensure all forms clearly identify demo behavior until a backend is connected.
+- [ ] Scan the repository and its history for secrets before public release.
+- [ ] Add a license only after choosing terms that match the intended reuse.
 
 ## License
 
-No project license has been confirmed in this repository. Until a license is added, others should not assume they have permission to reuse, modify, or distribute this project's code.
+No license is currently declared. Unless a license is added, visitors should not assume they have permission to reuse, modify, or distribute this project.
