@@ -5,85 +5,80 @@ A front-end automotive website project for showcasing vehicles and presenting au
 ## Features
 
 - **Home page** with the E-RIDES Automotives introduction and navigation.
-- **Vehicle inventory** with vehicle categories and search/filter controls for details such as price, type, fuel, and year.
-- **Rental tools** including rental-duration, vehicle-category, and insurance selections with price-calculation interfaces.
+- **Vehicle inventory** with vehicle categories and search/filter controls for price, type, fuel, and year.
+- **Rental tools** with rental-duration, vehicle-category, and insurance selections and price-calculation interfaces.
 - **Services page** presenting vehicle protection, inspection, and emergency-service information.
 - **Contact page** for customer enquiries.
 - **Theme control** and responsive styling.
 
-> Note: These are features represented in the current source files. Some booking, contact, or service actions may need backend integration before they can process real customer requests.
+> These are features represented in the current source files. Booking, contact, and service actions may need backend integration before they can process real customer requests.
 
 ## Project structure
 
 ```text
 ERIDES/
-├── html/
-│   ├── index.html
-│   ├── inventory.html
-│   ├── services.html
-│   └── contact.html
-├── css/
-│   ├── main.css
-│   ├── base.css
-│   ├── components.css
-│   ├── home.css
-│   ├── inventory.css
-│   ├── services.css
-│   ├── contact.css
-│   └── responsive.css
-├── JS/
-│   ├── calculator.js
-│   ├── comparison.js
-│   ├── faq.js
-│   ├── features.js
-│   ├── inventory.js
-│   ├── services.js
-│   ├── testimonials.js
-│   ├── theme.js
-│   └── topa.js
-└── images/
-    └── ...
+├── html/       # Home, inventory, services, and contact pages
+├── css/        # Page styles, components, and responsive rules
+├── JS/         # Browser-side interactions
+├── images/     # Website images
+├── requirements.txt
+└── README.md
 ```
 
 ## Getting started
 
-This repository contains a browser-based front end.
+The website's main pages are static HTML, CSS, and JavaScript.
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/Eric-coder01/ERIDES.git
+   cd ERIDES
    ```
 
-2. Open the project folder in your editor.
-3. Open `html/index.html` in a browser. For local development, you can use an editor extension such as Live Server and serve the repository folder.
-4. Use the navigation to explore the Home, Inventory, Services, and Contact pages.
+2. Open `html/index.html` in a browser. For local development, serve the repository folder with a local static server such as VS Code Live Server.
+3. Navigate through Home, Inventory, Services, and Contact.
 
-No Node.js installation is required for the basic static pages. If you work on individual scripts, check their imports and external service requirements before running them.
+No Node.js installation is required for the basic static pages.
 
-## Important security note
+## Optional barcode API script
 
-The repository currently includes a Python script at `css/api.py` that contains an API credential in its source code. Treat that credential as exposed:
+The repository also contains `css/api.py`, a separate Python utility that calls the PDF417 Pro barcode API. It is not required to run the website.
 
-- Revoke or rotate it with the service provider immediately.
-- Remove the credential from the source and load any replacement from an environment variable or another secure secret store.
-- Do not commit API keys, tokens, passwords, or other secrets to Git.
-- Review the Git history as well; deleting a secret from the latest version does not remove it from earlier commits.
+1. Install Python 3.9 or newer.
+2. Install its dependency:
 
-The Python script also calls an external barcode-generation API and is separate from the basic static website. Review it and configure its dependencies and credentials securely before running it.
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
 
-## Development
+3. Set the API token in your environment:
 
-The main website is built with HTML, CSS, and JavaScript. Contributions and improvements can be made through feature branches and pull requests.
+   **Linux/macOS**
+   ```bash
+   export PDF417_API_TOKEN="your-provider-token"
+   python css/api.py
+   ```
 
-Before submitting changes, please check that:
+   **PowerShell**
+   ```powershell
+   $env:PDF417_API_TOKEN = "your-provider-token"
+   python css/api.py
+   ```
+
+Never put a real token in source code, README files, screenshots, or commits. The previous hard-coded credential must be revoked or rotated with the provider. Removing a credential from the latest file does not remove it from Git history.
+
+## Development checklist
+
+Before submitting changes, verify that:
 
 - Navigation links work across all pages.
 - CSS and JavaScript asset paths resolve correctly.
 - Inventory filters and calculators behave as expected.
-- The layout remains usable on mobile and desktop screens.
-- No private credentials or personal information are included in commits.
+- Layouts work on mobile and desktop.
+- Forms and booking actions clearly indicate whether they are demonstrations or connected to a real backend.
+- No private credentials or personal information are committed.
 
 ## License
 
-No project license has been confirmed in the repository. Unless a license is added, others should not assume they have permission to reuse, modify, or distribute this project's code.
+No project license has been confirmed in this repository. Until a license is added, others should not assume they have permission to reuse, modify, or distribute this project's code.
